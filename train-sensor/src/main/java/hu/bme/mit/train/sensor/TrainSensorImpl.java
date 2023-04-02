@@ -31,7 +31,7 @@ public class TrainSensorImpl implements TrainSensor {
 	@Override
     public void emergencyBrake() {
         this.speedLimit = 0;
-        controller.setSpeedLimit(speedLimit);
+        controller.setSpeedLimit(speedLimit)
     }
 
 }

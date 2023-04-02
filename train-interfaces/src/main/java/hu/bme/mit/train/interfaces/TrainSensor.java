@@ -12,4 +12,6 @@ public interface TrainSensor {
 	void emergencyBrake();
 
 	Table<LocalDateTime, Integer, Integer> getTachographTable();
+
+	void createTachographTable();
 }

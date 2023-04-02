@@ -1,5 +1,9 @@
 package hu.bme.mit.train.sensor;
 
+import java.time.LocalDateTime;
+
+import com.google.common.collect.Table;
+
 import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainSensor;
 import hu.bme.mit.train.interfaces.TrainUser;
@@ -34,4 +38,16 @@ public class TrainSensorImpl implements TrainSensor {
         controller.setSpeedLimit(speedLimit)
     }
 
+	@Override
+	public Table<LocalDateTime, Integer, Integer> getTachographTable() {
+		Table<LocalDateTime, Integer, Integer> tachographData = null;
+		
+		LocalDateTime currentTime = LocalDateTime.now();
+        int joystickPosition = user.getJoystickPosition();
+        int referenceSpeed = controller.getReferenceSpeed();
+		tachographData.put(currentTime, joystickPosition, referenceSpeed);
+		return tachographData;
+	}
+
+	
 }
